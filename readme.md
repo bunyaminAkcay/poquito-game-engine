@@ -1,9 +1,3 @@
-# Python template
+# Poquito
 
-Python template for game jam.
-
-# users
-
-Alperen Akkan           alb-ern
-Bünyamin Akçay          bunyaminAkcay
-Mert Koç
+A lightweight game engine built with Pygame.
