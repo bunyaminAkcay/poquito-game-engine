@@ -74,9 +74,9 @@ class Character(AnimatedObject):
         self.x += self.velocityX
         self.y += self.velocityY
 
-        if self.collidedBottom and self.velocityX < self.idleSpeed:
+        if self.collidedBottom and abs(self.velocityX) < self.idleSpeed:
             self.currentAnimationIndex = 0
-        elif self.collidedBottom and self.velocityX >= self.idleSpeed:
+        elif self.collidedBottom and abs(self.velocityX) >= self.idleSpeed:
             self.currentAnimationIndex = 1
         elif self.velocityY < 0:
             self.currentAnimationIndex = 2

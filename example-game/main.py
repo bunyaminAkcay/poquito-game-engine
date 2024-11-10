@@ -8,15 +8,15 @@ import pygame
 
 from core.game import Game
 from core.scene import Scene
-from core.camera import Camera
 from core.UIText import UIText
 
 from character import Character, CharacterCollider
 from terrain import Terrain
+from mainCamera import MainCamera
 
 def main():
 
-    cam = Camera(0, 0, 1)
+    cam = MainCamera(0, 0)
 
     scene = Scene("Scene1", cam)
     scene.addGameObject(cam)
@@ -25,6 +25,8 @@ def main():
     character = Character(0, -250, 32 * 2, 32 * 2, 0, [])
     scene.addGameObject(character)
     
+    cam.referenceObject = character
+
     terrainSprite = pygame.image.load(os.path.join(base_path, "assets", "Terrain", "terrain.png"))
     
     terrain1 = Terrain(-160, 150, 160*2, 48*2, 0, terrainSprite)
