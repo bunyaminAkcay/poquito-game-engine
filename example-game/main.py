@@ -1,6 +1,8 @@
 import sys
 import os
-sys.path.append(os.path.abspath("../src"))
+base_path = os.path.dirname(__file__)
+src_path = os.path.join(base_path, "..", "src")
+sys.path.append(src_path)
 
 import pygame
 
@@ -22,16 +24,15 @@ def main():
     
     character = Character(0, -250, 32 * 2, 32 * 2, 0, [])
     scene.addGameObject(character)
-
-    terrainSprite = pygame.image.load("assets/Terrain/terrain.png")
+    
+    terrainSprite = pygame.image.load(os.path.join(base_path, "assets", "Terrain", "terrain.png"))
+    
     terrain1 = Terrain(-160, 150, 160*2, 48*2, 0, terrainSprite)
     scene.addGameObject(terrain1)
 
-    terrainSprite = pygame.image.load("assets/Terrain/terrain.png")
     terrain2 = Terrain(-160, -150, 160*2, 48*2, 0, terrainSprite)
     scene.addGameObject(terrain2)
 
-    terrainSprite = pygame.image.load("assets/Terrain/terrain.png")
     terrain3 = Terrain( 300, 0, 160*2, 48*2, 0, terrainSprite)
     scene.addGameObject(terrain3)
 

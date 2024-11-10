@@ -1,6 +1,8 @@
 import sys
 import os
-sys.path.append(os.path.abspath("../src"))
+base_path = os.path.dirname(__file__)
+src_path = os.path.join(base_path, "..", "src")
+sys.path.append(src_path)
 
 from core.animatedObject import AnimatedObject
 import pygame
@@ -23,16 +25,16 @@ class Character(AnimatedObject):
         self.collidedHorizantal = False
         self.setTag("Character")
 
-        idleSpriteSheet = pygame.image.load("assets/character/Idle.png")
+        idleSpriteSheet = pygame.image.load(os.path.join(base_path, "assets", "character", "Idle.png"))
         idleAnimation = Animation( Animation.spriteSheetToImageList(idleSpriteSheet, 32, 32, 11), 50)
         
-        runSpriteSheet = pygame.image.load("assets/character/Run.png")
+        runSpriteSheet = pygame.image.load(os.path.join(base_path, "assets", "character", "Run.png"))
         runAnimation = Animation( Animation.spriteSheetToImageList(runSpriteSheet, 32, 32, 12), 50)
 
-        jumpSprite = pygame.image.load("assets/character/Jump.png")
+        jumpSprite = pygame.image.load(os.path.join(base_path, "assets", "character", "Jump.png"))
         jumpAnimation = Animation( [jumpSprite], 50)
 
-        fallSprite = pygame.image.load("assets/character/Fall.png")
+        fallSprite = pygame.image.load(os.path.join(base_path, "assets", "character", "Fall.png"))
         fallAnimation = Animation( [fallSprite], 50)
 
         self.setAnimations([idleAnimation, runAnimation, jumpAnimation, fallAnimation])

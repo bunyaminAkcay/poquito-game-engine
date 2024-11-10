@@ -1,6 +1,8 @@
 import sys
 import os
-sys.path.append(os.path.abspath("../src"))
+base_path = os.path.dirname(__file__)
+src_path = os.path.join(base_path, "..", "src")
+sys.path.append(src_path)
 
 from core.spriteObject import SpriteObject
 import pygame
