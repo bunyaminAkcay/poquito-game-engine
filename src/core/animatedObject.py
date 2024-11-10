@@ -15,21 +15,25 @@ class AnimatedObject(PositionalObject):
             self.__scaledImage = pygame.transform.scale(self.__animationList[self.currentAnimationIndex].getCurrentImage(), (width, height))
             self._surface.blit(self.__scaledImage, (0,0))
 
-    def _updateScale(self, zoom):        
+    def _updateScale(self, zoom):
         self._surface.fill(self._backgroundColor)
         if self.__animationList != []:
             self.__scaledImage = pygame.transform.scale(self.__animationList[self.currentAnimationIndex].getCurrentImage(), (int(self.width * zoom), int(self.height * zoom)))
             self._surface.blit(self.__scaledImage, (0, 0))
+            if self.flipX == True or self.flipY == True:
+                self._surface = pygame.transform.flip(self._surface, self.flipX, self.flipY)
         self._surface = pygame.transform.scale(self._surface, (int(self.width * zoom), int(self.height * zoom)) )
     
     def update(self):
+        
         if self.__animationList != [] and self.__animationList[self.currentAnimationIndex].clock.checkTickable() == True:
             scaledImageSize = self.__scaledImage.get_size()
             self._surface.fill(self._backgroundColor)
             self.__scaledImage = pygame.transform.scale(self.__animationList[self.currentAnimationIndex].getCurrentImage(), (scaledImageSize))
             self._surface.blit(self.__scaledImage, (0, 0))
             self._surface = pygame.transform.scale(self._surface, (scaledImageSize) )
-            self._surface = pygame.transform.flip(self._surface, self.flipX, self.flipY)
+            if self.flipX == True or self.flipY == True:
+                self._surface = pygame.transform.flip(self._surface, self.flipX, self.flipY)
         
     
     def setAnimations(self, animationList):

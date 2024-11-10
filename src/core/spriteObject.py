@@ -19,3 +19,5 @@ class SpriteObject(PositionalObject):
             self._surface.fill(self._backgroundColor)
             self._surface.blit(self.__scaledImage, (0, 0))
         self._surface = pygame.transform.scale(self._surface, (int(self.width * zoom), int(self.height * zoom)) )
+        if self.flipX == True or self.flipY == True:
+            self._surface = pygame.transform.flip(self._surface, self.flipX, self.flipY)

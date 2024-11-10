@@ -98,6 +98,9 @@ class Game:
             if isInWindow:
                 self.__screen.blit(gameObject._getSurface(), pixelPosition)
 
+            
+        self.getScene().mainCamera._zoomed = False 
+
         pygame.display.flip()
 
     def __fixedGameLoop(self):

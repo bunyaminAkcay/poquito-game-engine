@@ -8,6 +8,8 @@ class Camera(GameObject):
         self.centerY = y
         self._zoom = float(zoom)
         self._zoomed = False
+        if self._zoom !=1:
+            self._zoomed = True
     
     def zoom(self, zoomMultiplier):
         self._zoom = zoomMultiplier * self._zoom
